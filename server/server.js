@@ -11,9 +11,11 @@ const app = express();
 const port = process.env.PORT || 4000
 connectDB();
 
+const allowedOrigins = ['http://localhost:5173'] //here we can add more urlif we want just byh addin a comma
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({credentials: true}))
+app.use(cors({origin: allowedOrigins, credentials: true}))
 
 //APT Endpoints
 app.get('/', (req, res)=> res.send("API Working"));
